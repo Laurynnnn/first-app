@@ -2,6 +2,10 @@
 
 use App\Http\Middleware;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PatientController;
+use App\Models\Patient;
+
+Route::resource('patients', PatientController::class);
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,16 +35,20 @@ Route::get('/items/{category?}/{item?}', function ($category = 'Food', $item = '
     return 'Category is '.$category.'. Item is '.$item;
 });
 
-// Middleware Routes
-Route::middleware(['CheckRole'])->prefix('admin')->group(function () {
-    Route::get('/dashboard', function () {
-        return 'Admin Dashboard';
-    });
+// // Middleware Routes
+// Route::middleware(['CheckRole'])->prefix('admin')->group(function () {
+//     Route::get('/dashboard', function () {
+//         return 'Admin Dashboard';
+//     });
 
-    Route::get('/settings', function () {
-        return 'Admin Settings';
-    });
-});
+//     Route::get('/settings', function () {
+//         return 'Admin Settings';
+//     });
+// });
 
-Route::resource('posts', App\Http\Controllers\PostController::class);
-Route::get('/twoposts/{parameter1}/{parameter2}', 'App\Http\Controllers\PostController\@twoposts')->name('route.link');
+
+
+// Route::get('/', function () {
+//     $patients = Patient::all();
+//     return view('patients.index', compact('patients'));
+// });
