@@ -59,9 +59,12 @@ class PatientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePatientRequest $request, Patient $patient)
+    public function update(Request $request, Patient $patient)
     {
-        //
+        $patient->update($request->all());
+
+        return redirect()->route('patients.index')
+                         ->with('success', 'Patient updated successfully.');
     }
 
     /**

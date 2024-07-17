@@ -33,11 +33,22 @@
                         <td>{{ $patient->gender == 'M'? 'Male':'Female' }}</td>
                         <td>{{ $patient->nin }}</td>
                         <td>{{ $patient->date_of_birth }}</td>
-                        <td>{{ $patient->marital_status }}</td>
+                        <td>
+                            {{ $patient->marital_status == '1' ? 'Single' :
+                            ($patient->marital_status == '2' ? 'Married' :
+                            ($patient->marital_status == '3' ? 'Divorced' :'Widowed')) }}
+                        </td>
+
                         <td>{{ $patient->phone_number }}</td>
                         <td>{{ $patient->next_of_kin }}</td>
                         <td>{{ $patient->nok_phone_number }}</td>
-                        <td>{{ $patient->relationship }}</td>
+                        <td>
+                            {{ $patient->relationship == '1' ? 'Mother' :
+                            ($patient->relationship == '2' ? 'Father' :
+                            ($patient->relationship == '3' ? 'Daughter' :
+                            ($patient->relationship == '4' ? 'Son' : 'Uncle'))) }}
+                        </td>
+
                         <td>
                             <div class="btn-group">
                                 <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-info btn-sm mr-2">Show</a>
