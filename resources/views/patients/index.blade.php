@@ -14,8 +14,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
+                    <th>Patient Name</th>
                     <th>Gender</th>
                     <th>NIN</th>
                     <th>Date of Birth</th>
@@ -30,9 +29,8 @@
             <tbody>
                 @foreach ($patients as $patient)
                     <tr>
-                        <td>{{ $patient->first_name }}</td>
-                        <td>{{ $patient->last_name }}</td>
-                        <td>{{ $patient->gender }}</td>
+                        <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
+                        <td>{{ $patient->gender == 'M'? 'Male':'Female' }}</td>
                         <td>{{ $patient->nin }}</td>
                         <td>{{ $patient->date_of_birth }}</td>
                         <td>{{ $patient->marital_status }}</td>
@@ -42,8 +40,8 @@
                         <td>{{ $patient->relationship }}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-info btn-sm">Show</a>
-                                <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-info btn-sm mr-2">Show</a>
+                                <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-primary btn-sm mr-2">Edit</a>
                                 <form action="{{ route('patients.destroy', $patient->id) }}" method="POST" style="display: inline-block;">
                                     @csrf
                                     @method('DELETE')
