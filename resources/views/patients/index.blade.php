@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="container mt-5">
-        <h1>Patients</h1>
+        <h1>{{ __ ('messages.welcome') }}</h1>
+        <h1>{{ __ ('messages.greeting') }}</h1>
+        <h1>{{ __ ('messages.goodbye') }}</h1>
         <a class="btn btn-primary mb-3" href="{{ route('patients.create') }}">Create New Patient</a>
 
         @if ($message = Session::get('success'))

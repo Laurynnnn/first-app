@@ -22,8 +22,8 @@ class StorePatientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => 'required',
-            'last_name'=> 'required',
+            'first_name' => 'nullable',
+            'last_name'=> 'nullable',
             'gender' => 'required',
             'nin' => 'required',
             'date_of_birth' => 'required',
@@ -36,8 +36,8 @@ class StorePatientRequest extends FormRequest
     }
     public function messages():array{
         return [
-            'first_name.required' => 'Please enter your first name.',
-            'last_name.required' => 'Please enter your last name.',
+            // 'first_name.required' => 'Please enter your first name.',
+            // 'last_name.required' => 'Please enter your last name.',
             'gender.required' => 'Please select your gender.',
             'nin.required' => 'Please enter your NIN (National Identification Number).',
             'date_of_birth.required' => 'Please enter your date of birth.',
