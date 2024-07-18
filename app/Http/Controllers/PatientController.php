@@ -29,9 +29,9 @@ class PatientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePatientRequest $request)
     {
-
+        // dd($request);
         Patient::create($request->all());
 
         return redirect()->route('patients.index')
@@ -52,6 +52,7 @@ class PatientController extends Controller
      */
     public function edit($id)
     {
+        // dd($request);
         $patient=Patient::findOrFail($id);
         return view('patients.edit', compact('patient'));
     }
