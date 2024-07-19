@@ -20,6 +20,7 @@ class Patient extends Model
         'next_of_kin',
         'nok_phone_number',
         'relationship',
+        'slug'
     ];
     
 }

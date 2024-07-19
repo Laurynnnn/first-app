@@ -6,6 +6,7 @@ use App\Models\Patient;
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PatientController extends Controller
 {
@@ -31,8 +32,14 @@ class PatientController extends Controller
      */
     public function store(StorePatientRequest $request)
     {
+        // DB::insert
         // dd($request);
         Patient::create($request->all());
+        // DB::insert('INSERT INTO patients (first_name,last_name,gender,nin, date_of_birth,marital_status,
+        // phone_number,
+        // next_of_kin,
+        // nok_phone_number,
+        // relationship) VALUES (?,?,?,?,?,?,?,?,?,?)', [$request->first_name,$request->last_name,$request->gender,$request->nin, $request->date_of_birth, $request->marital_status, $request->phone_number, $request->next_of_kin, $request->nok_phone_number, $request->relationship]);
 
         return redirect()->route('patients.index')
                          ->with('success', 'Patient created successfully.');
@@ -44,6 +51,8 @@ class PatientController extends Controller
     public function show($id)
     {
         $patient=Patient::findOrFail($id);
+        // $patient = DB::select('SELECT * FROM patients WHERE id=:id', ['id'=> $id]);
+        // dd($patient);
         return view('patients.show', compact('patient'));
     }
 
