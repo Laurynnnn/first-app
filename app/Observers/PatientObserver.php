@@ -26,6 +26,7 @@ class PatientObserver
     public function created(Patient $patient): void
     {
         // Log the creation of a new patient
+        Log::info('A patient is created with ID: '.$patient->id);
     
     }
 
