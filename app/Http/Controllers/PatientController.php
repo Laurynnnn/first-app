@@ -33,7 +33,7 @@ class PatientController extends Controller
     public function store(StorePatientRequest $request)
     {
         // DB::insert
-        // dd($request);
+        // dd($request->validated());
         Patient::create($request->all());
         // DB::insert('INSERT INTO patients (first_name,last_name,gender,nin, date_of_birth,marital_status,
         // phone_number,

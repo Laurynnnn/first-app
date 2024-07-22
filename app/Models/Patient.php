@@ -22,5 +22,6 @@ class Patient extends Model
         'relationship',
         'slug'
     ];
+    public $timestamps = false;
     
 }

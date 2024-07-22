@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Models\Patient;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Carbon;
 
 class PatientObserver
 {
@@ -18,8 +19,11 @@ class PatientObserver
         }
 
         Log::info('A patient is being created: '.$patient->first_name);
-
-        Log::info('A patient is created with ID: '.$patient->id);
+        $patient_name = $patient->first_name .''. $patient->last_name;
+        $slug=Str::slug($patient_name,'-');
+        $patient->slug=$slug;
+        Log::info('name: '.$slug);
+        $patient->created_at =now();
     }
     /**
      * Handle the Patient "created" event.
@@ -28,12 +32,13 @@ class PatientObserver
     {
         // Log the creation of a new patient
         Log::info('A patient is created with ID: '.$patient->id);
-        $patient_name = $patient->first_name .''. $patient->last_name;
-        $slug=Str::slug($patient_name,'-');
-        $patient->slug=$slug;
 
-        Log::info('name: '.$slug);
     
+    }
+    public function updating(Patient $patient)
+    {
+        Log::info('Updating Patient : ', $patient->toArray());
+        $patient->updated_at = now();
     }
 
     /**
@@ -43,6 +48,7 @@ class PatientObserver
     {
         // Log the update of a patient
         Log::info('Patient updated: ', $patient->toArray());
+        // $patient->updated_at = now();
 
 
     }

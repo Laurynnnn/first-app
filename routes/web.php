@@ -4,12 +4,14 @@ use App\Http\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
 use App\Models\Patient;
+use App\Http\Controllers\LabController;
 
 Route::resource('patients', PatientController::class);
 
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/labs', [LabController::class,'index'])->name('');
 
 // Basic routing
 Route::get('/welcome', function () {
