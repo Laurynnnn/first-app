@@ -5,13 +5,20 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
 use App\Models\Patient;
 use App\Http\Controllers\LabController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ArticleController;
 
 Route::resource('patients', PatientController::class);
+Route::resource('products', ProductController::class);
+Route::resource('categories', CategoryController::class);
+Route::resource('articles', ArticleController::class);
 
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/labs', [LabController::class,'index'])->name('');
+
 
 // Basic routing
 Route::get('/welcome', function () {
