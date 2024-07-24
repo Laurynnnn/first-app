@@ -20,6 +20,7 @@ class PatientObserver
 
         Log::info('A patient is being created: '.$patient->first_name);
         $patient_name = $patient->first_name .''. $patient->last_name;
+        
         $slug=Str::slug($patient_name,'-');
         $patient->slug=$slug;
         Log::info('name: '.$slug);
