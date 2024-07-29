@@ -26,7 +26,7 @@ class ProductController extends Controller
             'name' => 'required',
             'category_id' => 'required|exists:categories,id',
         ]);
-
+        dd($request->all());
         Product::create($request->all());
 
         return redirect()->route('products.index')

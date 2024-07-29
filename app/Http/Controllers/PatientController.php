@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
-use App\Http\Requests\StorePatientRequest;
-use App\Http\Requests\UpdatePatientRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StorePatientRequest;
+use App\Http\Requests\UpdatePatientRequest;
 
 class PatientController extends Controller
 {
@@ -34,7 +34,7 @@ class PatientController extends Controller
     {
         // DB::insert
         // dd($request->validated());
-        Patient::create($request->all());
+        Patient::create($request->validated());
         // DB::insert('INSERT INTO patients (first_name,last_name,gender,nin, date_of_birth,marital_status,
         // phone_number,
         // next_of_kin,
